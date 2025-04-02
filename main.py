@@ -29,6 +29,11 @@ model = load_model()
 
 CLASS_LABELS = ["Glioma Tumor", "Meningioma Tumor", "No Tumor", "Pituitary Tumor"]
 
+st.set_page_config(
+    page_title="Brain Tumor Classification", 
+    page_icon="🧠" 
+)
+
 st.title("🧠 Brain Tumor Classification")
 st.write("Upload an MRI scan to classify the type of tumor.")
 
