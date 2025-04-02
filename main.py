@@ -1,11 +1,15 @@
 import streamlit as st
+
+# ✅ Set page config at the top
+st.set_page_config(
+    page_title="Brain Tumor Classification", 
+    page_icon="🧠" 
+)
+
 import tensorflow as tf
 import numpy as np
 import cv2
 from PIL import Image
-
-import streamlit as st
-import tensorflow as tf
 import gdown
 import os
 
@@ -15,32 +19,17 @@ GOOGLE_DRIVE_FILE_ID = "10nlJfTiDtu4Gokx5HndDQPAwDU2FwgXf"  # Replace with your 
 @st.cache_resource
 def load_model():
     if not os.path.exists(MODEL_PATH):  
-        # st.write("Downloading model (may take a few minutes)...")
         gdown.download(f"https://drive.google.com/uc?id={GOOGLE_DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
     return tf.keras.models.load_model(MODEL_PATH)
 
 model = load_model()
 
-# @st.cache_resource
-# def load_model():
-#     return tf.keras.models.load_model("brain_tumor_classification.keras")
-
-# model = load_model()
-
 CLASS_LABELS = ["Glioma Tumor", "Meningioma Tumor", "No Tumor", "Pituitary Tumor"]
-
-st.set_page_config(
-    page_title="Brain Tumor Classification", 
-    page_icon="🧠" 
-)
 
 st.title("🧠 Brain Tumor Classification")
 st.write("Upload an MRI scan to classify the type of tumor.")
 
 uploaded_file = st.file_uploader("Choose an MRI image...", type=["jpg", "png", "jpeg"])
-
-if uploaded_file:
-    image = Image.open(uploaded_file)
 
 def preprocess_image(image):
     img = np.array(image)  # Convert to NumPy array
@@ -50,11 +39,10 @@ def preprocess_image(image):
     return img
 
 if uploaded_file:
+    image = Image.open(uploaded_file)
     processed_image = preprocess_image(image)
     prediction = model.predict(processed_image)
     predicted_class = CLASS_LABELS[np.argmax(prediction)]  # Get the highest probability class
 
     st.write(f"### 🏥 Prediction: **{predicted_class}**")
-
-if uploaded_file:
     st.image(image, caption="Uploaded MRI Image", use_container_width=True)
