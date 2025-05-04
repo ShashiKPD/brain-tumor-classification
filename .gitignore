@@ -1,1 +1,3 @@
 *.keras
+.vscode/
+__pycache__/
