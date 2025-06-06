@@ -4,3 +4,4 @@ numpy
 pillow
 gdown
 opencv-python-headless
+streamlit-shadcn-ui
