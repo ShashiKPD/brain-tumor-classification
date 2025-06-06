@@ -16,15 +16,18 @@ import gdown
 import os
 import time
 import streamlit_shadcn_ui as ui
+# Import your email service module
 import email_service
 
 # Load model if not cached
-MODEL_PATH = "./model/brain_tumor_classification.keras"
+MODEL_DIR = "./model"
+MODEL_PATH = os.path.join(MODEL_DIR, "brain_tumor_classification.keras")
 GOOGLE_DRIVE_FILE_ID = "10nlJfTiDtu4Gokx5HndDQPAwDU2FwgXf"
 
 @st.cache_resource
 def load_model():
     if not os.path.exists(MODEL_PATH):
+        os.makedirs(MODEL_DIR, exist_ok=True)
         gdown.download(f"https://drive.google.com/uc?id={GOOGLE_DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
     return tf.keras.models.load_model(MODEL_PATH)
 
