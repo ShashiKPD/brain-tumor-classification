@@ -7,7 +7,7 @@ def send_email(receiver_email, prediction):
     sender_email = st.secrets["email"]["address"]
     sender_password = st.secrets["email"]["password"]
 
-    subject = "Brain Tumor Classification Result"
+    subject = "Brain Tumor Diagnosis Result"
     # body = f"Hello,\n\nThe result of your MRI scan is: {prediction}.\n\nStay healthy!"
     html = f"""
       <html>
@@ -57,7 +57,7 @@ def send_email(receiver_email, prediction):
                   <tr>
                     <td align="center" style="padding-top: 30px;">
                       <p style="font-size: 13px; color: #999999;">
-                        Sent securely from <a href="#" style="color: #3498db; text-decoration: none;">GlioTumor.ai</a> — a research initiative in medical imaging and AI.
+                        Sent securely from <a href="gliotumor.streamlit.app" style="color: #3498db; text-decoration: none;">GlioTumor.ai</a> — a research initiative in medical imaging and AI.
                       </p>
                       <p style="font-size: 12px; color: #cccccc;">© 2025 GlioTumor AI. All rights reserved.</p>
                     </td>
