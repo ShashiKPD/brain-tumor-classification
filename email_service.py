@@ -19,7 +19,7 @@ def send_email(receiver_email, prediction):
                   <!-- Header -->
                   <tr>
                     <td align="center" style="padding-bottom: 20px;">
-                      <h1 style="color: #2c3e50; margin: 0;">🧠 GlioTumor Diagnostics</h1>
+                      <h1 style="color: #2c3e50; margin: 0;">🧠 TumorDetect Diagnostics</h1>
                       <p style="color: #888888; font-size: 14px; margin: 5px 0 0;">Your trusted AI-based MRI tumor diagnosis</p>
                     </td>
                   </tr>
@@ -57,9 +57,9 @@ def send_email(receiver_email, prediction):
                   <tr>
                     <td align="center" style="padding-top: 30px;">
                       <p style="font-size: 13px; color: #999999;">
-                        Sent securely from <a href="gliotumor.streamlit.app" style="color: #3498db; text-decoration: none;">GlioTumor.ai</a> — a research initiative in medical imaging and AI.
+                        Sent securely from <a href="tumordetect.streamlit.app" style="color: #3498db; text-decoration: none;">TumorDetect.ai</a> — a research initiative in medical imaging and AI.
                       </p>
-                      <p style="font-size: 12px; color: #cccccc;">© 2025 GlioTumor AI. All rights reserved.</p>
+                      <p style="font-size: 12px; color: #cccccc;">© 2025 TumorDetect. All rights reserved.</p>
                     </td>
                   </tr>
 
